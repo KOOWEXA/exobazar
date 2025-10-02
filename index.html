@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ExoBazar – Plataforma de comercio digital innovadora y segura." />
+  <meta name="author" content="KOOWEXA" />
+  <title>ExoBazar</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpg" href="favicon1.jpg" />
+
+  <!-- Estilos personalizados -->
+  <style>
+    /* Reset básico y variables CSS */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #f9fafb;
+      --text: #111827;
+      --text-light: #6b7280;
+      --white: #ffffff;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-color: var(--secondary);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .download-btn {
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 0.875rem 2rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .download-btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px -1px rgba(0, 0, 0, 0.15);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 0 1.5rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .feature-card p {
+      color: var(--text-light);
+      font-size: 0.9375rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .download-btn {
+        width: 100%;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">ExoBazar</div>
+    <div class="brand">by KOOWEXA</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>El Futuro del Comercio Digital</h1>
+      <p>ExoBazar es una plataforma intuitiva y segura diseñada para conectar vendedores y compradores en un ecosistema moderno, eficiente y adaptable.</p>
+      <a href="https://apk.e-droid.net/apk/app3759538-nor4ju.apk?v=4" class="download-btn" id="smart-download-btn">
+        Descargar App
+      </a>
+    </section>
+
+    <section class="features">
+      <div class="feature-card">
+        <h3>Intuitivo</h3>
+        <p>Diseño centrado en el usuario para una experiencia facil.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Seguro</h3>
+        <p>Protección de datos y firewall.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Adaptable</h3>
+        <p>Funciona perfectamente en móviles y tablets.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Script inteligente para descarga -->
+  <script>
+    document.getElementById('smart-download-btn').addEventListener('click', function(e) {
+      // Detectar si es móvil para mejorar UX
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (isMobile) {
+        // En móviles, sugerir descarga directa
+        this.textContent = 'Descargando...';
+        setTimeout(() => {
+          this.textContent = 'Descargar App';
+        }, 2000);
+      }
+      // No se previene el comportamiento por defecto: permite la descarga
+    });
+  </script>
+</body>
+</html>
