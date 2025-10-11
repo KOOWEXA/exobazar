@@ -6,23 +6,31 @@
   <meta name="description" content="ExoBazar – Plataforma de comercio digital innovadora y segura." />
   <meta name="author" content="KOOWEXA" />
   <title>ExoBazar</title>
-
-  <!-- Favicon -->
   <link rel="icon" type="image/jpg" href="favicon1.jpg" />
+  <!-- Fuente Inter optimizada -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Estilos personalizados -->
   <style>
-    /* Reset básico y variables CSS */
+    /* === Variables y reset === */
     :root {
-      --primary: #2563eb;
+      --primary: #1e40af;
+      --primary-light: #3b82f6;
       --primary-dark: #1d4ed8;
-      --secondary: #f9fafb;
-      --text: #111827;
-      --text-light: #6b7280;
-      --white: #ffffff;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-secondary: #475569;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
       --radius: 12px;
-      --transition: all 0.3s ease;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      :root {
+        --transition: none;
+      }
     }
 
     * {
@@ -32,150 +40,324 @@
     }
 
     body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background-color: var(--secondary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--background);
       color: var(--text);
       line-height: 1.6;
+      scroll-behavior: smooth;
+      position: relative;
+      overflow-x: hidden;
     }
 
+    /* === Fondo digital semi-animado === */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(30, 64, 175, 0.03) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 25%),
+        radial-gradient(circle at 50% 50%, rgba(29, 78, 216, 0.02) 0%, transparent 35%);
+      pointer-events: none;
+      z-index: -1;
+      animation: subtleFloat 25s infinite alternate ease-in-out;
+    }
+
+    @keyframes subtleFloat {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 100% 100%; }
+    }
+
+    .container {
+      width: min(100% - 2rem, 1200px);
+      margin-inline: auto;
+    }
+
+    /* === Header === */
     header {
-      padding: 1.5rem 2rem;
+      padding-block: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    .logo {
-      font-size: 1.75rem;
-      font-weight: 700;
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    }
+
+    .logo-text {
+      font-size: clamp(1.25rem, 4vw, 1.75rem);
+      font-weight: 800;
       color: var(--primary);
     }
 
+    .brand {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    /* === Hero === */
     .hero {
       text-align: center;
-      padding: 4rem 1.5rem;
-      max-width: 800px;
-      margin: 0 auto;
+      padding-block: 4rem 2rem;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 6vw, 2.75rem);
+      font-weight: 800;
       margin-bottom: 1rem;
       color: var(--text);
     }
 
     .hero p {
-      font-size: 1.125rem;
-      color: var(--text-light);
-      margin-bottom: 2rem;
+      font-size: clamp(1rem, 3.5vw, 1.125rem);
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 2rem;
     }
 
+    /* Botón circular adaptativo */
     .download-btn {
-      background-color: var(--primary);
-      color: var(--white);
+      background: var(--primary);
+      color: white;
       border: none;
-      padding: 0.875rem 2rem;
-      font-size: 1.125rem;
-      font-weight: 600;
-      border-radius: var(--radius);
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
       cursor: pointer;
       transition: var(--transition);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-md);
       text-decoration: none;
-      display: inline-block;
-    }
-
-    .download-btn:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px -1px rgba(0, 0, 0, 0.15);
-    }
-
-    .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      padding: 0 1.5rem 4rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      place-content: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-btn::after {
+      content: '↓';
+    }
+
+    .download-btn:hover,
+    .download-btn:focus {
+      background: var(--primary-dark);
+      transform: scale(1.08);
+      box-shadow: 0 8px 16px -2px rgba(0,0,0,0.2);
+      outline: 2px solid var(--primary-light);
+      outline-offset: 4px;
+    }
+
+    .download-label {
+      margin-top: 0.75rem;
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* === Sección: Cómo funciona === */
+    .how-it-works {
+      padding-block: 4rem;
+      background: var(--surface);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.75rem, 5vw, 2.25rem);
+      margin-bottom: 3rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
     }
 
     .feature-card {
-      background: var(--white);
-      padding: 1.5rem;
+      background: var(--background);
+      padding: 1.75rem;
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
     }
 
     .feature-card h3 {
+      font-size: 1.25rem;
       margin-bottom: 0.75rem;
-      color: var(--text);
+      color: var(--primary);
+      font-weight: 700;
     }
 
     .feature-card p {
-      color: var(--text-light);
+      color: var(--text-secondary);
       font-size: 0.9375rem;
     }
 
-    /* Responsive */
+    /* === Sección: Funcionalidades === */
+    .capabilities {
+      padding-block: 4rem;
+    }
+
+    .capabilities-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .capability-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .capability-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--primary-light);
+      color: white;
+      border-radius: 50%;
+      display: grid;
+      place-content: center;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      font-weight: bold;
+    }
+
+    /* === Responsive === */
     @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 2rem;
+      .download-btn {
+        width: 56px;
+        height: 56px;
       }
 
-      .download-btn {
-        width: 100%;
-        padding: 1rem;
+      .download-label {
+        font-size: 0.875rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">ExoBazar</div>
+  <header class="container">
+    <a href="#" class="logo-wrapper">
+      <img src="favicon1.jpg" alt="Logo de ExoBazar" class="logo-img">
+      <span class="logo-text">ExoBazar</span>
+    </a>
     <div class="brand">by KOOWEXA</div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero container">
       <h1>El Futuro del Comercio Digital</h1>
       <p>ExoBazar es una plataforma intuitiva y segura diseñada para conectar vendedores y compradores en un ecosistema moderno, eficiente y adaptable.</p>
-      <a href="https://apk.e-droid.net/apk/app3759538-nor4ju.apk?v=4" class="download-btn" id="smart-download-btn">
-        Descargar App
-      </a>
+      <div style="display: inline-block; text-align: center;">
+        <a href="https://apk.e-droid.net/apk/app3759538-nor4ju.apk?v=4" class="download-btn" id="smart-download-btn" aria-label="Descargar la aplicación ExoBazar"></a>
+        <div class="download-label">Descargar App</div>
+      </div>
     </section>
 
-    <section class="features">
-      <div class="feature-card">
-        <h3>Intuitivo</h3>
-        <p>Diseño centrado en el usuario para una experiencia facil.</p>
+    <section class="how-it-works">
+      <div class="container">
+        <h2 class="section-title">¿Cómo funciona ExoBazar?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>Publica lo que quieras</h3>
+            <p>Artículos nuevos, usados, servicios, ofertas especiales… todo tipo de categorías están permitidas.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Interactúa en tiempo real</h3>
+            <p>Comenta, responde, da like y construye una comunidad activa alrededor de tus publicaciones.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Personaliza tus anuncios</h3>
+            <p>Agrega imágenes, descripciones detalladas, precios, ubicación y enlaces externos relevantes.</p>
+          </div>
+        </div>
       </div>
-      <div class="feature-card">
-        <h3>Seguro</h3>
-        <p>Protección de datos y firewall.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Adaptable</h3>
-        <p>Funciona perfectamente en móviles y tablets.</p>
+    </section>
+
+    <section class="capabilities container">
+      <h2 class="section-title">Todo lo que puedes hacer en ExoBazar</h2>
+      <div class="capabilities-list">
+        <div class="capability-item">
+          <div class="capability-icon">✓</div>
+          <p>Puedes publicar múltiples artículos en distintas categorías</p>
+        </div>
+        <div class="capability-item">
+          <div class="capability-icon">✓</div>
+          <p>Puedes agregar una imagen por publicación</p>
+        </div>
+        <div class="capability-item">
+          <div class="capability-icon">✓</div>
+          <p>Puedes escribir descripciones completas y detalladas</p>
+        </div>
+        <div class="capability-item">
+          <div class="capability-icon">✓</div>
+          <p>Puedes incluir uno o varios enlaces (redes, tienda, contacto)</p>
+        </div>
+        <div class="capability-item">
+          <div class="capability-icon">✓</div>
+          <p>Puedes recibir y responder comentarios de otros usuarios</p>
+        </div>
+        <div class="capability-item">
+          <div class="capability-icon">✓</div>
+          <p>Puedes dar “me gusta” a publicaciones que te interesen</p>
+        </div>
+        <div class="capability-item">
+          <div class="capability-icon">✓</div>
+          <p>Puedes buscar una amplia categoría de artículos</p>
+        </div>
+        <div class="capability-item">
+          <div class="capability-icon">✓</div>
+          <p>Puedes recibir notificaciones de novedades sobre la app</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Script inteligente para descarga -->
   <script>
-    document.getElementById('smart-download-btn').addEventListener('click', function(e) {
-      // Detectar si es móvil para mejorar UX
+    document.getElementById('smart-download-btn').addEventListener('click', function (e) {
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       if (isMobile) {
-        // En móviles, sugerir descarga directa
-        this.textContent = 'Descargando...';
+        const btn = this;
+        const originalIcon = btn.textContent || '↓';
+        btn.textContent = '…';
+        btn.setAttribute('aria-busy', 'true');
+
         setTimeout(() => {
-          this.textContent = 'Descargar App';
+          btn.textContent = originalIcon;
+          btn.removeAttribute('aria-busy');
         }, 2000);
       }
-      // No se previene el comportamiento por defecto: permite la descarga
     });
   </script>
 </body>
