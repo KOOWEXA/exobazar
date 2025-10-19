@@ -1,4 +1,4 @@
-# ExoBazar – Página Web
+# ExoBazar
 
 Una landing page moderna, corporativa y adaptable para **ExoBazar**, plataforma de comercio digital innovadora desarrollada por **KOOWEXA**.
 
@@ -33,6 +33,3 @@ La página incluye un botón que redirige directamente a la descarga de la aplic
 > ✅ Ideal para landing pages rápidas, campañas de lanzamiento o presentación corporativa.
 
 ---
-
-Desarrollado con ❤️ por **KOOWEXA**  
-© 2025 KOOWEXA – Todos los derechos reservados.
