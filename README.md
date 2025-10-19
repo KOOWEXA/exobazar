@@ -30,6 +30,6 @@ La página incluye un botón que redirige directamente a la descarga de la aplic
 2. Asegúrate de tener un archivo `favicon.jpg` en la misma carpeta que `index.html`.
 3. Abre `index.html` en cualquier navegador moderno.
 
-> ✅ Ideal para landing pages rápidas, campañas de lanzamiento o presentación corporativa.
+### ✅ Ideal para landing pages rápidas, campañas de lanzamiento o presentación corporativa.
 
 ---
